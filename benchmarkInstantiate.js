@@ -1,4 +1,6 @@
-const mof = require('./dist')
+const { time } = require('console');
+const fs = require('fs');
+const path = require('path');
 
 async function main() {
   console.time('')
@@ -11,7 +13,7 @@ async function main() {
       console.log(i, process.memoryUsage().heapUsed / 1000000, 'MB');
       console.timeLog('')
     }
-    await mof();
+    await WebAssembly.instantiate(fs.readFileSync(path.join(__dirname, 'dist', 'index.wasm')))
   }
 }
 
