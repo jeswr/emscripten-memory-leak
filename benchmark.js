@@ -1,4 +1,4 @@
-const mof = require('./dist')
+const helloWorld = require('./dist')
 
 async function main() {
   console.time('')
@@ -11,7 +11,7 @@ async function main() {
       console.log(i, process.memoryUsage().heapUsed / 1000000, 'MB');
       console.timeLog('')
     }
-    await mof();
+    await helloWorld();
   }
 }
 
