@@ -13,7 +13,8 @@ async function main() {
       console.log(i, process.memoryUsage().heapUsed / 1000000, 'MB');
       console.timeLog('')
     }
-    await WebAssembly.instantiate(fs.readFileSync(path.join(__dirname, 'dist', 'index.wasm')))
+    const module = await WebAssembly.instantiate(fs.readFileSync(path.join(__dirname, 'dist', 'index.wasm')));
+    await module.instance.exports.main()
   }
 }
 
